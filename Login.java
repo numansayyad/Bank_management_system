@@ -7,7 +7,7 @@ import javax.swing.*;
 public class Login extends JFrame{
     Login(){
 
-        setTitle("ATM MACINE");
+        setTitle("ATM MACINE SYSTEM");
         setSize(800,400);
         setVisible(true);
         setLocation(350,200);
