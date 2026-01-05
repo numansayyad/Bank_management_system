@@ -1,9 +1,14 @@
 import java.awt.Color;
 import java.awt.Font;
 import java.util.Random;
+import com.toedter.calendar.JDateChooser;
 
+import javax.swing.ButtonGroup;
+import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
+import javax.swing.JRadioButton;
+import javax.swing.JTextField;
 
 public class Signupone extends JFrame {
     Signupone(){
@@ -13,7 +18,7 @@ public class Signupone extends JFrame {
 
         long Random=Math.abs((ran.nextLong()% 9000L )+ 1000L);
         //labels
-        JLabel formno = new JLabel("application for no"+Random);
+        JLabel formno = new JLabel("Application Form No : "+Random);
         formno.setFont(new Font("Raieway",Font.BOLD,38));
         formno.setBounds(140,20,600,40);
         add(formno);
@@ -24,20 +29,146 @@ public class Signupone extends JFrame {
         add(personaldetails);
 
         JLabel name  = new JLabel("Name:");
-        name.setFont(new Font("Raieway",Font.BOLD,22));
+        name.setFont(new Font("Raieway",Font.BOLD,20));
         name.setBounds(100,140,100,30);
         add(name);
 
+        JTextField nameTextField = new JTextField();
+        nameTextField.setFont(new Font ("Raleway",Font.BOLD,14));
+        nameTextField.setBounds(300,140,400,30);
+        add(nameTextField);
+
         JLabel fname  = new JLabel("Father's Name:");
-        fname.setFont(new Font("Raieway",Font.BOLD,22));
+        fname.setFont(new Font("Raieway",Font.BOLD,20));
         fname.setBounds(100,190,200,30);
         add(fname);
 
+        JTextField fnameTextField = new JTextField();
+        fnameTextField.setFont(new Font ("Raleway",Font.BOLD,14));
+        fnameTextField.setBounds(300,190,400,30);
+        add(fnameTextField);
+        
+
         JLabel dob  = new JLabel("Date of Birth :");
-        dob.setFont(new Font("Raieway",Font.BOLD,22));
-        dob.setBounds(100,190,200,30);
+        dob.setFont(new Font("Raieway",Font.BOLD,20));
+        dob.setBounds(100,240,200,30);
         add(dob);
 
+        JDateChooser dateChooser = new JDateChooser();//add jar file for calender 
+        dateChooser.setBounds(300,240,400,30);
+        dateChooser.setForeground(new Color(105,105,105));
+        add(dateChooser);
+
+        JLabel gender = new JLabel("Gender :");
+        gender.setFont(new Font("Raieway",Font.BOLD,20));
+        gender.setBounds(100,290,200,30);
+        add(gender);
+
+        JRadioButton male = new JRadioButton("Male");
+        male.setBounds(300,290,60,30);
+        male.setBackground(Color.WHITE); 
+        add(male);
+
+        JRadioButton female = new JRadioButton("Female");//JRadioButton is a class and female is a object
+        female.setBounds(370,290,70,30); 
+        female.setBackground(Color.WHITE); 
+        add(female);
+
+        ButtonGroup genderGroup = new ButtonGroup();
+       genderGroup.add(male);
+        genderGroup.add(female);
+
+
+
+
+        JLabel email = new JLabel("Email Address :");
+        email.setFont(new Font("Raieway",Font.BOLD,20));
+        email.setBounds(100,340,200,30);
+        add(email);
+
+        JTextField emailTextField = new JTextField();
+        emailTextField.setFont(new Font ("Raleway",Font.BOLD,14));
+        emailTextField.setBounds(300,340,400,30);
+        add(emailTextField);
+        
+        
+        JLabel maritalstatus = new JLabel("Marital Status :");
+        maritalstatus.setFont(new Font("Raieway",Font.BOLD,20));
+        maritalstatus.setBounds(100,390,200,30);
+        add(maritalstatus);
+
+        
+        JRadioButton married = new JRadioButton("Married");
+        married.setBounds(300,390,90,30);
+        married.setBackground(Color.WHITE); 
+        add(married);
+
+        JRadioButton unmarried = new JRadioButton("Unmarried");//JRadioButton is a class and female is a object
+        unmarried.setBounds(390,390,100,30); 
+        unmarried.setBackground(Color.WHITE); 
+        add(unmarried);
+
+        
+        JRadioButton other = new JRadioButton("Other");//JRadioButton is a class and female is a object
+        other.setBounds(490,390,100,30); 
+        other.setBackground(Color.WHITE); 
+        add(other);
+
+        ButtonGroup statusall = new ButtonGroup();
+        statusall.add(married);
+        statusall.add(unmarried);
+        statusall.add(other);
+        
+        JLabel address = new JLabel("Address :");
+        address.setFont(new Font("Raieway",Font.BOLD,20));
+        address.setBounds(100,440,200,30);
+        add(address);
+
+        JTextField addrTextField = new JTextField();
+        addrTextField.setFont(new Font ("Raleway",Font.BOLD,14));
+        addrTextField.setBounds(300,440,400,30);
+        add(addrTextField);
+        
+
+        JLabel city= new JLabel("City :");
+        city.setFont(new Font("Raieway",Font.BOLD,20));
+        city.setBounds(100,490,200,30);
+        add(city);
+
+        JTextField cityTextField = new JTextField();
+        cityTextField.setFont(new Font ("Raleway",Font.BOLD,14));
+        cityTextField.setBounds(300,490,400,30);
+        add(cityTextField);
+        
+        
+        JLabel state= new JLabel("State :");
+        state.setFont(new Font("Raieway",Font.BOLD,20));
+        state.setBounds(100,540,200,30);
+        add(state);
+
+        JTextField stateTextField = new JTextField();
+        stateTextField.setFont(new Font ("Raleway",Font.BOLD,14));
+        stateTextField.setBounds(300,540,400,30);
+        add(stateTextField);
+        
+        
+        JLabel pincode= new JLabel("Pin Code :");
+        pincode.setFont(new Font("Raieway",Font.BOLD,20));
+        pincode.setBounds(100,590,200,30);
+        add(pincode);
+
+        JTextField pinTextField = new JTextField();
+        pinTextField.setFont(new Font ("Raleway",Font.BOLD,14));
+        pinTextField.setBounds(300,590,400,30);
+        add(pinTextField);
+        
+
+        JButton next = new JButton("Next");
+        next.setBackground(Color.BLACK);
+        next.setForeground(Color.WHITE);
+        next.setFont(new Font("Raleway",Font.BOLD,14));
+        next.setBounds(620,660,80,30);
+        add(next);
        // ======================================================================
 
 
