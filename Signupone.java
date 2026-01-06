@@ -6,6 +6,7 @@ import javax.swing.ButtonGroup;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 import javax.swing.JRadioButton;
 import javax.swing.JTextField;
 import java.awt.event.*;
@@ -175,6 +176,7 @@ public class Signupone extends JFrame implements ActionListener{
         next.setForeground(Color.WHITE);
         next.setFont(new Font("Raleway",Font.BOLD,14));
         next.setBounds(620,660,80,30);
+        next.addActionListener(this);
         add(next);
        // ======================================================================
 
@@ -197,7 +199,7 @@ public void actionPerformed(ActionEvent ae) {
         gender="Male";
     }
     else if (female.isSelected()){
-        gender="Fenale";
+        gender="Female";
     }
     String email=emailTextField.getText();
     String maritalstatus=null;
@@ -216,9 +218,11 @@ public void actionPerformed(ActionEvent ae) {
     String pincode=pinTextField.getText();
 
     try{
-
+        if(name.equals(""));
+        JOptionPane.showMessageDialog(null,"Name is Required ");
     }
     catch(Exception e){
+        System.out.println(e);
 
     }
 }

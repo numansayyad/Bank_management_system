@@ -6,6 +6,13 @@
     "configurations": [
         {
             "type": "java",
+            "name": "Signupone",
+            "request": "launch",
+            "mainClass": "Signupone",
+            "projectName": "bank management system_dfb76efe"
+        },
+        {
+            "type": "java",
             "name": "Current File",
             "request": "launch",
             "mainClass": "${file}"
