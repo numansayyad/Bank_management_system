@@ -217,13 +217,43 @@ public void actionPerformed(ActionEvent ae) {
     String state=stateTextField.getText();
     String pincode=pinTextField.getText();
 
-    try{
-        if(name.equals(""));
-        JOptionPane.showMessageDialog(null,"Name is Required ");
-    }
-    catch(Exception e){
-        System.out.println(e);
+//     if{
+//         if(name.equals(""));
+//         JOptionPane.showMessageDialog(null,"Name is Required ");
+//     }
+//     else
+//         {
+//         condatabase c = new condatabase();
+//         String query= "insert into signup values ('"+ formno+ "','"+ name+ "','"+ fname+ "','"+ dob+ "','"+ gender+ "','"+ email+ "','"+ maritalstatus+ "','"+ address+ "','"+ city+ "','"+ pincode+ "','"+state+ "')";
+//             c.s.executeUpdate(query);
+//     }
+//     catch(Exception e){
+//         System.out.println(e);
 
+//     }
+// }
+
+// VALIDATION (NO try-catch)
+    if (name == null || name.trim().isEmpty()) {
+        JOptionPane.showMessageDialog(null, "Name is Required");
+        return;   // ⬅️ very important
+    }
+
+    //  DATABASE CODE
+    try {
+        condatabase c = new condatabase();
+
+        String query =
+        "INSERT INTO signup(formno,name,fname,dob,gender,email,maritalstatus,address,city,pincode,state) " +
+        "VALUES('"+formno+"','"+name+"','"+fname+"','"+dob+"','"+gender+"','"+email+"','"+maritalstatus+
+        "','"+address+"','"+city+"','"+pincode+"','"+state+"')";
+
+        c.s.executeUpdate(query);
+
+        JOptionPane.showMessageDialog(null,"Data Inserted Successfully");
+
+    } catch (Exception e) {
+        e.printStackTrace();
     }
 }
 
