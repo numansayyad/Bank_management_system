@@ -6,6 +6,13 @@
     "configurations": [
         {
             "type": "java",
+            "name": "Signuptwo",
+            "request": "launch",
+            "mainClass": "Signuptwo",
+            "projectName": "bank management system_dfb76efe"
+        },
+        {
+            "type": "java",
             "name": "Login",
             "request": "launch",
             "mainClass": "Login",

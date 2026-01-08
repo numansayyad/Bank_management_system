@@ -217,22 +217,6 @@ public void actionPerformed(ActionEvent ae) {
     String state=stateTextField.getText();
     String pincode=pinTextField.getText();
 
-//     if{
-//         if(name.equals(""));
-//         JOptionPane.showMessageDialog(null,"Name is Required ");
-//     }
-//     else
-//         {
-//         condatabase c = new condatabase();
-//         String query= "insert into signup values ('"+ formno+ "','"+ name+ "','"+ fname+ "','"+ dob+ "','"+ gender+ "','"+ email+ "','"+ maritalstatus+ "','"+ address+ "','"+ city+ "','"+ pincode+ "','"+state+ "')";
-//             c.s.executeUpdate(query);
-//     }
-//     catch(Exception e){
-//         System.out.println(e);
-
-//     }
-// }
-
 // VALIDATION (NO try-catch)
 if (name == null || name.isBlank()) {
         JOptionPane.showMessageDialog(null, "Name is Required");
