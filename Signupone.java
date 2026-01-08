@@ -234,9 +234,9 @@ public void actionPerformed(ActionEvent ae) {
 // }
 
 // VALIDATION (NO try-catch)
-    if (name == null || name.trim().isEmpty()) {
+if (name == null || name.isBlank()) {
         JOptionPane.showMessageDialog(null, "Name is Required");
-        return;   // ⬅️ very important
+        return;   //  i used return keyword for stop.user enter only valid input
     }
 
     //  DATABASE CODE
