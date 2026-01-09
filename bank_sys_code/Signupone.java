@@ -1,7 +1,9 @@
+package bank_sys_code;
 import java.awt.Color;
 import java.awt.Font;
 import java.util.Random;
 import com.toedter.calendar.JDateChooser;
+
 import javax.swing.ButtonGroup;
 import javax.swing.JButton;
 import javax.swing.JFrame;
@@ -20,7 +22,8 @@ public class Signupone extends JFrame implements ActionListener{
     JDateChooser dateChooser;
 
     Signupone(){
-        setLayout(null);
+        setLayout(null);// to manually set the position and size of components using setBounds()
+
 
         Random ran = new Random();
 
@@ -235,7 +238,11 @@ if (name == null || name.isBlank()) {
         c.s.executeUpdate(query);
 
         JOptionPane.showMessageDialog(null,"Data Inserted Successfully");
+         setVisible(false); 
+// hide the current screen
 
+new Signuptwo(formno).setVisible(true);  
+// open the next signup page and pass the form number
     } catch (Exception e) {
         e.printStackTrace();
     }

@@ -1,6 +1,6 @@
+package bank_sys_code;
 import java.awt.Color;
 import java.awt.Font;
-import com.toedter.calendar.JDateChooser;
 import javax.swing.ButtonGroup;
 import javax.swing.JButton;
 import javax.swing.JComboBox;
@@ -9,18 +9,21 @@ import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 import javax.swing.JRadioButton;
 import javax.swing.JTextField;
+
 import java.awt.event.*;
 
 public class Signuptwo extends JFrame implements ActionListener {
 
-    JTextField panTextField,adharTextField;
+    JTextField panTextField, adharTextField;
     JButton next;
-    JRadioButton yess,noo,eyess,enoo;
-    JComboBox religion,cato,incat,educa,occ;
-    Signuptwo() {
+    JRadioButton yess, noo, eyess, enoo;
+    JComboBox religion, cato, incat, educa, occ;
+    String formno;
+
+    Signuptwo(String formno) {
         setLayout(null);
         setTitle("NEW ACCOUNT APPLICATION FROM -PAGE 2");
-
+        this.formno = formno;
         // labels
 
         JLabel additionaldetails = new JLabel("Page 2 : Additional Details");
@@ -44,7 +47,7 @@ public class Signuptwo extends JFrame implements ActionListener {
                 "Other"
         };
 
-         religion = new JComboBox(valreligions);
+        religion = new JComboBox(valreligions);
         religion.setBounds(300, 140, 400, 30);
         religion.setBackground(Color.WHITE);
         add(religion);
@@ -60,12 +63,10 @@ public class Signuptwo extends JFrame implements ActionListener {
                 "SC",
                 "Other"
         };
-         cato = new JComboBox(cat);
+        cato = new JComboBox(cat);
         cato.setBounds(300, 190, 400, 30);
         cato.setBackground(Color.WHITE);
         add(cato);
-
-      
 
         JLabel dob = new JLabel("Income :");
         dob.setFont(new Font("Raieway", Font.BOLD, 20));
@@ -78,7 +79,7 @@ public class Signuptwo extends JFrame implements ActionListener {
                 "<5,00,000",
                 "upto 10,00,000"
         };
-         incat = new JComboBox(incomecatogery);
+        incat = new JComboBox(incomecatogery);
         incat.setBounds(300, 240, 400, 30);
         incat.setBackground(Color.WHITE);
         add(incat);
@@ -93,41 +94,36 @@ public class Signuptwo extends JFrame implements ActionListener {
         email.setBounds(100, 315, 200, 30);
         add(email);
 
-        
         String[] evalues = {
                 "Non Graduate",
                 "Graduate",
                 "Post Graduate",
                 "Others",
         };
-         educa = new JComboBox(evalues);
+        educa = new JComboBox(evalues);
         educa.setBounds(300, 315, 400, 30);
         educa.setBackground(Color.WHITE);
         add(educa);
-
 
         JLabel occupation = new JLabel("Occupation :");
         occupation.setFont(new Font("Raieway", Font.BOLD, 20));
         occupation.setBounds(100, 390, 200, 30);
         add(occupation);
 
-        
         String[] occuvalue = {
                 "Salaried",
                 "Self Employed",
                 "Business",
                 "Student",
-              "Retired",
-              "Others",
-
+                "Retired",
+                "Others",
 
         };
-         occ = new JComboBox(occuvalue);
+        occ = new JComboBox(occuvalue);
         occ.setBounds(300, 390, 400, 30);
         occ.setBackground(Color.WHITE);
         add(occ);
 
-       
         JLabel pan = new JLabel("PAN No :");
         pan.setFont(new Font("Raieway", Font.BOLD, 20));
         pan.setBounds(100, 440, 200, 30);
@@ -148,48 +144,45 @@ public class Signuptwo extends JFrame implements ActionListener {
         adharTextField.setBounds(300, 490, 400, 30);
         add(adharTextField);
 
-        JLabel state = new JLabel("Senior Citizen :");
-        state.setFont(new Font("Raieway", Font.BOLD, 20));
-        state.setBounds(100, 540, 200, 30);
-        add(state);
+        JLabel senior = new JLabel("Senior Citizen :");
+        senior.setFont(new Font("Raieway", Font.BOLD, 20));
+        senior.setBounds(100, 540, 200, 30);
+        add(senior);
 
         yess = new JRadioButton("Yes");
-        yess.setBounds(300,390,90,30);
-        yess.setBackground(Color.WHITE); 
+        yess.setBounds(300, 540, 90, 30);
+        yess.setBackground(Color.WHITE);
         add(yess);
 
-         noo = new JRadioButton("No");
-        noo.setBounds(390,390,100,30); 
-        noo.setBackground(Color.WHITE); 
+        noo = new JRadioButton("No");
+        noo.setBounds(390, 540, 90, 30);
+        noo.setBackground(Color.WHITE);
         add(noo);
-    
+
         ButtonGroup statusall = new ButtonGroup();
         statusall.add(yess);
         statusall.add(noo);
-
-     
 
         JLabel pincode = new JLabel("Exisiting Account:");
         pincode.setFont(new Font("Raieway", Font.BOLD, 20));
         pincode.setBounds(100, 590, 200, 30);
         add(pincode);
 
-         eyess = new JRadioButton("Yes");
-        eyess.setBounds(300,390,90,30);
-        eyess.setBackground(Color.WHITE); 
+        eyess = new JRadioButton("Yes");
+        eyess.setBounds(300, 590, 90, 30);
+        eyess.setBackground(Color.WHITE);
         add(eyess);
 
-         enoo = new JRadioButton("No");
-        enoo.setBounds(390,390,100,30); 
-        enoo.setBackground(Color.WHITE); 
+        enoo = new JRadioButton("No");
+        enoo.setBounds(390, 590, 90, 30);
+        enoo.setBackground(Color.WHITE);
         add(enoo);
-    
+
         ButtonGroup show = new ButtonGroup();
-        show.add(yess);
-      show.add(noo);
+        show.add(eyess);
+        show.add(enoo);
 
-
-       ;
+        ;
 
         next = new JButton("Next");
         next.setBackground(Color.BLACK);
@@ -208,51 +201,49 @@ public class Signuptwo extends JFrame implements ActionListener {
     }
 
     public void actionPerformed(ActionEvent ae) {
-        String sreligion=(String) religion.getSelectedItem();
-        String scategory=(String) scategory.getSelectedItem();
-        String sincome=(String) sincome.getSelectedItem();
-        
+        String sreligion = (String) religion.getSelectedItem();
+        String scategory = (String) cato.getSelectedItem();
+        String sincome = (String) incat.getSelectedItem();
+        String seducation = (String) educa.getSelectedItem();
+        String soccupation = (String) occ.getSelectedItem();
+        String seniorcitizen = null;
 
-        String dob = ((JTextField) dateChooser.getDateEditor().getUiComponent()).getText();
-        String gender = null;
-        if (male.isSelected()) {
-            gender = "Male";
-        } else if (female.isSelected()) {
-            gender = "Female";
-        }
-        String email = emailTextField.getText();
-        String maritalstatus = null;
-        if (married.isSelected()) {
-            maritalstatus = "married";
-        } else if (unmarried.isSelected()) {
-            maritalstatus = "unmarried";
-        } else if (other.isSelected()) {
-            maritalstatus = "other";
-        }
-        String address = addrTextField.getText();
-        String city = cityTextField.getText();
-        String state = stateTextField.getText();
-        String pincode = pinTextField.getText();
-
-        // VALIDATION (NO try-catch)
-        if (name == null || name.isBlank()) {
-            JOptionPane.showMessageDialog(null, "Name is Required");
-            return; // i used return keyword for stop.user enter only valid input
+        if (yess.isSelected()) {
+            seniorcitizen = "Yes";
+        } else if (noo.isSelected()) {
+            seniorcitizen = "No";
         }
 
-        // DATABASE CODE
+        String existingaccount = null;
+        if (eyess.isSelected()) {
+            existingaccount = "Yes";
+        } else if (enoo.isSelected()) {
+            existingaccount = "No";
+        }
+        String span = panTextField.getText();
+        String adhar = adharTextField.getText();
+
+        if (span.isBlank() || adhar.isBlank()) {
+            JOptionPane.showMessageDialog(null, "PAN and Aadhar are required");
+            return;
+        }
+
         try {
             condatabase c = new condatabase();
 
-            String query = "INSERT INTO signup(formno,name,fname,dob,gender,email,maritalstatus,address,city,pincode,state) "
+            String query = "INSERT INTO signuptwo(formno,religion,category,income,education,occupation,pan,adhar,seniorcitizen,existingaccount) "
                     +
-                    "VALUES('" + formno + "','" + name + "','" + fname + "','" + dob + "','" + gender + "','" + email
-                    + "','" + maritalstatus +
-                    "','" + address + "','" + city + "','" + pincode + "','" + state + "')";
+                    "VALUES('" + formno + "','" + sreligion + "','" + scategory + "','" + sincome + "','" +
+                    seducation + "','" + soccupation + "','" + span + "','" + adhar + "','" +
+                    seniorcitizen + "','" + existingaccount + "')";
 
             c.s.executeUpdate(query);
 
-            JOptionPane.showMessageDialog(null, "Data Inserted Successfully");
+            JOptionPane.showMessageDialog(null, "Page 2 Details Saved Successfully");
+
+            // next page open here (SignupThree)
+            // new Signupthree(formno).setVisible(true);
+            // setVisible(false);
 
         } catch (Exception e) {
             e.printStackTrace();
@@ -260,6 +251,6 @@ public class Signuptwo extends JFrame implements ActionListener {
     }
 
     public static void main(String[] args) {
-        new Signuptwo();
+        new Signuptwo("");
     }
 }
