@@ -22,7 +22,7 @@ public class Signupone extends JFrame implements ActionListener{
     JDateChooser dateChooser;
 
     Signupone(){
-        setLayout(null);// to manually set the position and size of components using setBounds()
+        setLayout(null);// too manually set the position and size of components using setBounds()
 
 
         Random ran = new Random();

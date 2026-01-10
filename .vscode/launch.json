@@ -9,6 +9,20 @@
             "name": "Signupthree",
             "request": "launch",
             "mainClass": "bank_sys_code.Signupthree",
+            "projectName": "bank management system_20d2c981"
+        },
+        {
+            "type": "java",
+            "name": "Login",
+            "request": "launch",
+            "mainClass": "bank_sys_code.Login",
+            "projectName": "bank management system_20d2c981"
+        },
+        {
+            "type": "java",
+            "name": "Signupthree",
+            "request": "launch",
+            "mainClass": "bank_sys_code.Signupthree",
             "projectName": "bank management system_dfb76efe"
         },
         {
