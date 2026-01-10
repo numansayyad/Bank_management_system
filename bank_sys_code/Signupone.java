@@ -225,7 +225,10 @@ if (name == null || name.isBlank()) {
         JOptionPane.showMessageDialog(null, "Name is Required");
         return;   //  i used return keyword for stop.user enter only valid input
     }
-
+else if(state==null || state.isBlank()){
+    JOptionPane.showMessageDialog(null, "state is Required");
+return;
+}
     //  DATABASE CODE
     try {
         condatabase c = new condatabase();

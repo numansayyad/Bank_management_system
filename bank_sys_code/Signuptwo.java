@@ -243,7 +243,8 @@ public class Signuptwo extends JFrame implements ActionListener {
 
             // next page open here (SignupThree)
             // new Signupthree(formno).setVisible(true);
-            // setVisible(false);
+            setVisible(false);
+            new Signupthree(formno).setVisible(true);
 
         } catch (Exception e) {
             e.printStackTrace();
