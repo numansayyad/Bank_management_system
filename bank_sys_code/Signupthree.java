@@ -21,7 +21,8 @@ public class Signupthree extends JFrame implements ActionListener {// ActionList
     JButton submit, cancel;
     String formno;
 
-    Signupthree(String formno) {
+    Signupthree(String formno) {    // constructor initializes the frame, UI components, and form number
+
         this.formno = formno;
         setLayout(null);
 
