@@ -1,16 +1,18 @@
 package bank_sys_code;
+
 import java.awt.Color;
 import java.awt.Font;
 import java.awt.Image;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.sql.ResultSet;
 
 import javax.swing.*;
 
 public class Login extends JFrame implements ActionListener { // used action listner interface
     JButton login, clear, signup;
     JTextField cardTextField;
-     JPasswordField pinTextField;
+    JPasswordField pinTextField;
 
     Login() {
 
@@ -37,7 +39,7 @@ public class Login extends JFrame implements ActionListener { // used action lis
 
         cardTextField = new JTextField();
         cardTextField.setBounds(230, 157, 250, 30);
-        cardTextField.setFont(new Font("Arial",Font.BOLD,14));
+        cardTextField.setFont(new Font("Arial", Font.BOLD, 14));
         add(cardTextField);
 
         JLabel pin = new JLabel("PIN:");
@@ -47,7 +49,7 @@ public class Login extends JFrame implements ActionListener { // used action lis
 
         pinTextField = new JPasswordField();
         pinTextField.setBounds(230, 220, 250, 30);
-        pinTextField.setFont(new Font("Arial",Font.BOLD,14));
+        pinTextField.setFont(new Font("Arial", Font.BOLD, 14));
 
         add(pinTextField);
 
@@ -89,15 +91,43 @@ public class Login extends JFrame implements ActionListener { // used action lis
 
     public void actionPerformed(ActionEvent ae) {// after button click exacly what will be action
                                                  // perform decide this class
-        if(ae.getSource()==clear){
+        if (ae.getSource() == clear) {
             cardTextField.setText("");
             pinTextField.setText("");
         }
-        
-        else if (ae.getSource() == login){
 
-        }
-        else if (ae.getSource() == signup){
+        else if (ae.getSource() == login) {
+            condatabase c = new condatabase();
+            String cardnumber = cardTextField.getText();
+            String pinnumber = pinTextField.getText();
+            if (cardnumber.isEmpty() || pinnumber.isEmpty()) {
+                JOptionPane.showMessageDialog(null, "Please enter Card No and PIN");
+                return;
+            }
+
+            try {
+
+                String query = "SELECT * FROM signupthree WHERE cardnumber='" + cardnumber +
+                        "' AND pinnumber='" + pinnumber + "'";
+
+                ResultSet rs = c.s.executeQuery(query);
+
+                if (rs.next()) {
+                    setVisible(false);
+                    new Transation(pinnumber).setVisible(true); // ✅ NOW OPENS
+                } else {
+                    JOptionPane.showMessageDialog(null, "Incorrect Card No or PIN");
+                }
+
+            } catch (Exception e) {
+                System.out.println(e);// handle and display runtime errors
+
+            }
+            {
+
+            }
+
+        } else if (ae.getSource() == signup) {
             setVisible(false);// hide the current window
             new Signupone().setVisible(true);// open the Signup page
         }
