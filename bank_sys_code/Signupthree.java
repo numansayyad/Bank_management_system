@@ -238,7 +238,7 @@ else if (c6.isSelected()) {
             );
 
             setVisible(false);
-            new Deposite(pinnumber).setVisible(true);
+        new Transation(pinnumber).setVisible(true);
 
         } catch (Exception e) {
             System.out.println(e);

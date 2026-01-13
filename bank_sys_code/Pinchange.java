@@ -9,11 +9,10 @@ import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 import javax.swing.JPasswordField;
-import javax.swing.JTextField;
 import java.awt.event.*;
 
 public class Pinchange extends JFrame implements ActionListener {
-    JPasswordField pin, repin;//password input field (text is hidden for security)
+    JPasswordField pin, repin;// password input field (text is hidden for security)
     JButton change, back;
     String pinnumber;
 
@@ -77,32 +76,34 @@ public class Pinchange extends JFrame implements ActionListener {
             try {
                 String npin = pin.getText();
                 String rpin = repin.getText();
-
-                if (!npin.equals(rpin)) {
-                    JOptionPane.showMessageDialog(null, "Entered PIN does not match");
-                    return;
-                }
-                if (rpin.equals("")) {
-                    JOptionPane.showMessageDialog(null, "Please Enter a PIN");
+                if (npin.equals("")) {
+                    JOptionPane.showMessageDialog(null, "Please Enter New PIN");
                     return;
                 }
                 if (rpin.equals("")) {
                     JOptionPane.showMessageDialog(null, "Please Re-Enter New PIN");
                     return;
                 }
-
+                if (!npin.equals(rpin)) {
+                    JOptionPane.showMessageDialog(null, "Entered PIN does not match");
+                    return;
+                }
+                if (npin.length() != 4) {
+                    JOptionPane.showMessageDialog(null, "PIN must be 4 digits");
+                    return;
+                }
                 condatabase c = new condatabase();
-
-                String query1 = "update bank set pin = '" + rpin + "' where pin = '" + pinnumber + "'";
-                String query2 = "update login set pin = '" + rpin + "' where pin = '" + pinnumber + "'";
-                String query3 = "update signupthree set pin = '" + rpin + "' where pin = '" + pinnumber + "'";
                 
+String query1 = "update bank set pin = '"+rpin+"' where pin = '"+pinnumber+"'";
+String query2 = "update login set pinnumber = '"+rpin+"' where pinnumber = '"+pinnumber+"'";
+String query3 = "update signupthree set pinnumber = '"+rpin+"' where pinnumber = '"+pinnumber+"'";
+
                 c.s.executeUpdate(query1);
                 c.s.executeUpdate(query2);
                 c.s.executeUpdate(query3);
                 JOptionPane.showMessageDialog(null, "PIN Changed Successfully");
-                setVisible(false);//after pin changed successfully then close the window pinchange
-                new Transation(rpin).setVisible(true);//and open the transaction page
+                setVisible(false);// after pin changed successfully then close the window pinchange
+                new Transation(rpin).setVisible(true);// and open the transaction page
 
             } catch (Exception e) {
                 System.out.println(e);
