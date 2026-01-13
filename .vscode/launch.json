@@ -6,6 +6,13 @@
     "configurations": [
         {
             "type": "java",
+            "name": "Pinchange",
+            "request": "launch",
+            "mainClass": "bank_sys_code.Pinchange",
+            "projectName": "bank management system_20d2c981"
+        },
+        {
+            "type": "java",
             "name": "Fastcash",
             "request": "launch",
             "mainClass": "bank_sys_code.Fastcash",

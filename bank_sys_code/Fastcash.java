@@ -2,7 +2,6 @@ package bank_sys_code;
 
 import java.awt.Color;
 import java.awt.Image;
-import java.awt.Label;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.sql.ResultSet;
