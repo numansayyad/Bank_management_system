@@ -209,34 +209,75 @@ else if (c6.isSelected()) {
     facility = facility + " E-Statement";
 }
 }
-try{
+ // -------- Database Operation --------
+    if (ae.getSource() == submit) {
 
-if (accountype == null || accountype.isEmpty()) {//this is validation for user account type is required
-    JOptionPane.showMessageDialog(null, "Account Type is Required");
-    return;
-}
+        if (accountype == null) {
+            JOptionPane.showMessageDialog(null, "Account Type is Required");
+            return;
+        }
 
-else{
-condatabase c = new condatabase();
-String query1 = "INSERT INTO signupthree VALUES('" + formno + "','" + accountype + "','" + cardnumber + "','" + pinnumber + "','" + facility + "')";
-String query2 = "INSERT INTO signupthree VALUES('" + formno + "','" + cardnumber + "','" + pinnumber + "')";
+        try {
+            condatabase c = new condatabase();
 
-    c.s.executeUpdate(query1);
-        c.s.executeUpdate(query2);
+            String query =
+                "INSERT INTO signupthree VALUES('" +
+                formno + "','" +
+                accountype + "','" +
+                cardnumber + "','" +
+                pinnumber + "','" +
+                facility + "')";
 
-JOptionPane.showMessageDialog(null, "Card Number :"+cardnumber+"\n Pin :"+pinnumber);
+            c.s.executeUpdate(query);
 
-}
-}
-       catch (Exception e) {
-                System.out.println(e);
-            }
-        
-        //  else if (ae.getSource() == cancel) {  
-        //     setVisible(false);
-        // }
-    
+            JOptionPane.showMessageDialog(
+                null,
+                "Account Created Successfully!\n\n" +
+                "Card Number : " + cardnumber + "\n" +
+                "PIN Number  : " + pinnumber
+            );
+
+            setVisible(false);
+            new Deposite(pinnumber).setVisible(true);
+
+        } catch (Exception e) {
+            System.out.println(e);
+        }
+
+    } 
+    else if (ae.getSource() == cancel) {
+        setVisible(false);
+        new Login().setVisible(true);
     }
+}
+
+
+
+// try{
+
+// if (accountype == null || accountype.isEmpty()) {//this is validation for user account type is required
+//     JOptionPane.showMessageDialog(null, "Account Type is Required");
+//     return;
+// }
+
+// else{
+// condatabase c = new condatabase();
+// String query1 = "INSERT INTO signupthree VALUES('" + formno + "','" + accountype + "','" + cardnumber + "','" + pinnumber + "','" + facility + "')";
+// String query2 = "INSERT INTO signupthree VALUES('" + formno + "','" + cardnumber + "','" + pinnumber + "')";
+
+//     c.s.executeUpdate(query1);
+//         c.s.executeUpdate(query2);
+
+// JOptionPane.showMessageDialog(null, "Card Number :"+cardnumber+"\n Pin :"+pinnumber);
+
+// }
+// }
+//        catch (Exception e) {
+//                 System.out.println(e);
+//             }
+        
+     
+//     }
     public static void main(String args[]) {
         new Signupthree("");
     }

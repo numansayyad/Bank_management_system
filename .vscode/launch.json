@@ -6,6 +6,20 @@
     "configurations": [
         {
             "type": "java",
+            "name": "Fastcash",
+            "request": "launch",
+            "mainClass": "bank_sys_code.Fastcash",
+            "projectName": "bank management system_20d2c981"
+        },
+        {
+            "type": "java",
+            "name": "Withdrawal",
+            "request": "launch",
+            "mainClass": "bank_sys_code.Withdrawal",
+            "projectName": "bank management system_20d2c981"
+        },
+        {
+            "type": "java",
             "name": "Deposite",
             "request": "launch",
             "mainClass": "bank_sys_code.Deposite",

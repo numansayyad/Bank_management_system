@@ -15,6 +15,7 @@ import javax.swing.JLabel;
 public class Transation  extends JFrame implements ActionListener{//action lister used to perform a action by user like clickbutton etc
         JButton deposite, cashwith, fastcash, minstat, pinchange, balance, exit;
     String pinnumber;
+    
     Transation(String pinnumber){
         this.pinnumber=pinnumber;
         setLayout(null);
@@ -79,7 +80,13 @@ public class Transation  extends JFrame implements ActionListener{//action liste
         else if(ae.getSource()==deposite){
             setVisible(false);
             new Deposite(pinnumber).setVisible(true);
-        }
+        }else if(ae.getSource()==cashwith ){
+            setVisible(false);
+            new Withdrawal(pinnumber).setVisible(true);}
+            else if(ae.getSource()==fastcash ){
+            setVisible(false);
+            new Fastcash(pinnumber).setVisible(true);}
+            
     }
        public static void main(String[] args) {
         new Transation("");

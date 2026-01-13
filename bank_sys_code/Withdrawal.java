@@ -12,11 +12,11 @@ import java.awt.event.*;
 import java.awt.Color;
 import java.awt.Image;
 
-public class Deposite extends JFrame implements ActionListener{
+public class Withdrawal extends JFrame implements ActionListener{
  JTextField amount;
-JButton deposit, back;
+JButton withdraw, back;
 String pinnumber;
-    Deposite(String pinnumer) {
+    Withdrawal(String pinnumer) {
         this.pinnumber=pinnumer;
         setLayout(null);
         ImageIcon i1 = new ImageIcon(ClassLoader.getSystemResource("images/atm.jpg"));
@@ -26,7 +26,7 @@ String pinnumber;
         image.setBounds(0, 0, 900, 900);
         add(image);
 
-        JLabel text = new JLabel("Enter the amount you want to deposite");
+        JLabel text = new JLabel("Enter the amount you want to Withdrawal");
         text.setForeground(Color.white);
         text.setFont(new Font("System", Font.BOLD, 16));
         text.setBounds(170, 300, 400, 20);
@@ -37,10 +37,10 @@ String pinnumber;
         amount.setBounds(170, 350, 320, 25);
         image.add(amount);
 
-        deposit = new JButton("Deposit");
-        deposit.setBounds(355, 485, 150, 30);
-        deposit.addActionListener(this);
-        image.add(deposit);
+        withdraw= new JButton("Withdraw");
+        withdraw.setBounds(355, 485, 150, 30);
+        withdraw.addActionListener(this);
+        image.add(withdraw);
 
         back = new JButton("Back");
         back.setBounds(355, 520, 150, 30);
@@ -53,21 +53,21 @@ String pinnumber;
 
     }
 public void actionPerformed(ActionEvent ae){
-if(ae.getSource()==deposit){
+if(ae.getSource()==withdraw){
     String number = amount.getText();
 Date date = new Date();
 
 if (number.equals("")) {
     JOptionPane.showMessageDialog(null, 
-        "Please enter the amount you want to deposit");
+        "Please enter the amount you want to Withdrawal");
 } else {
     try { // exception handling is a very important for the database
     condatabase c = new condatabase();
-    String query = "insert into bank values('"+pinnumber+"', '"+date+"', 'Deposit', '"+number+"')";
+    String query = "insert into bank values('"+pinnumber+"', '"+date+"', 'Withdrawal', '"+number+"')";
     c.s.executeUpdate(query);
 
     JOptionPane.showMessageDialog(null,
-        "Rs " + number + " Deposited Successfully");
+        "Rs " + number + " Withdrawal Successfully");
         setVisible(false);//close the deposite frame
         new Transation(pinnumber).setVisible(true);//open the deposite frame
 } catch (Exception e) {
@@ -84,6 +84,7 @@ if (number.equals("")) {
 }
 }
     public static void main(String[] args) {
-        new Deposite("");
+        new Withdrawal("");
     }
 }
+
