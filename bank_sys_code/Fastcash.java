@@ -77,48 +77,50 @@ public class Fastcash extends JFrame implements ActionListener {// action lister
     }
 
     public void actionPerformed(ActionEvent ae) { // actionperform class override
-            if (ae.getSource() == exit) {
-        setVisible(false);
-        new Transation(pinnumber).setVisible(true);
-        return;
-    }
-
-    String amount = ((JButton) ae.getSource()).getText().substring(3);
-
-    try {
-        condatabase c = new condatabase();
-            int balance = 0;
-
-        ResultSet rs = c.s.executeQuery(
-            "select * from bank where pin = '" + pinnumber + "'");
-
-        while (rs.next()) {
-            if (rs.getString("type").equals("Deposit")) {
-                balance += Integer.parseInt(rs.getString("amount"));
-            } else {
-                balance -= Integer.parseInt(rs.getString("amount"));
-            }
-        }
-
-        if (balance < Integer.parseInt(amount)) {
-            JOptionPane.showMessageDialog(null, "Insufficient Balance");
+        if (ae.getSource() == exit) {
+            setVisible(false);
+            new Transation(pinnumber).setVisible(true);
             return;
         }
 
-        Date date = new Date();
-        String query =
-            "insert into bank values('" + pinnumber + "','" +
-            date + "','Withdrawal','" + amount + "')";
+        String amount = ((JButton) ae.getSource())
+                .getText()
+                .substring(3)
+                .replace(",", "");
 
-        c.s.executeUpdate(query);
+        try {
+            condatabase c = new condatabase();
+            int balance = 0;
 
-        JOptionPane.showMessageDialog(null, "Rs " + amount + " Debited Successfully");
-        setVisible(false);
-        new Transation(pinnumber).setVisible(true);
-    } catch (Exception e) {
-        System.out.println(e);
+            ResultSet rs = c.s.executeQuery(
+                    "select * from bank where pin = '" + pinnumber + "'");
+
+            while (rs.next()) {
+                if (rs.getString("type").equals("Deposit")) {
+                    balance += Integer.parseInt(rs.getString("amount").replace(",", ""));
+                } else {
+                    balance -= Integer.parseInt(rs.getString("amount").replace(",", ""));
+                }
+            }
+
+            if (balance < Integer.parseInt(amount)) {
+                JOptionPane.showMessageDialog(null, "Insufficient Balance");
+                return;
+            }
+
+            Date date = new Date();
+            String query = "insert into bank values('" + pinnumber + "','" +
+                    date + "','Withdrawal','" + amount + "')";
+
+            c.s.executeUpdate(query);
+
+            JOptionPane.showMessageDialog(null, "Rs " + amount + " Debited Successfully");
+            setVisible(false);
+            new Transation(pinnumber).setVisible(true);
+        } catch (Exception e) {
+            System.out.println(e);
+        }
     }
-}
 
     public static void main(String[] args) {
         new Fastcash("");
