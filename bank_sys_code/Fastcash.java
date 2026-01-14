@@ -84,10 +84,10 @@ public class Fastcash extends JFrame implements ActionListener {// action lister
     }
 
     String amount = ((JButton) ae.getSource()).getText().substring(3);
-    int balance = 0;
 
     try {
         condatabase c = new condatabase();
+            int balance = 0;
 
         ResultSet rs = c.s.executeQuery(
             "select * from bank where pin = '" + pinnumber + "'");
@@ -123,5 +123,4 @@ public class Fastcash extends JFrame implements ActionListener {// action lister
     public static void main(String[] args) {
         new Fastcash("");
     }
-
 }
