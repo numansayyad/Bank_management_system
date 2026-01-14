@@ -69,9 +69,9 @@ public class Ministatement extends JFrame {
                         "<br><br>";
 
                 if (rs.getString("type").equalsIgnoreCase("Deposit")) {
-                    bal += Integer.parseInt(rs.getString("amount"));
+  bal += Integer.parseInt(rs.getString("amount").replace(",", ""));
                 } else {
-                    bal -= Integer.parseInt(rs.getString("amount"));
+    bal -= Integer.parseInt(rs.getString("amount").replace(",", ""));
                 }
             }
 

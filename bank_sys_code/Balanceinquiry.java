@@ -41,10 +41,10 @@ public class Balanceinquiry extends JFrame implements ActionListener {
 
             while (rs.next()) {
                 if (rs.getString("type").equals("Deposit")) {
-                    balance += Integer.parseInt(rs.getString("amount"));
+                      balance += Integer.parseInt(rs.getString("amount").replace(",", ""));
                 } else {
-                    balance -= Integer.parseInt(rs.getString("amount"));
-                }
+                    balance -= Integer.parseInt(rs.getString("amount").replace(",", ""));
+}
             }
 
         } catch (Exception e) {
