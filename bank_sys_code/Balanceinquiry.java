@@ -54,7 +54,7 @@ public class Balanceinquiry extends JFrame implements ActionListener {
         JLabel text = new JLabel("Your Current Balance is Rs " + balance);
         text.setForeground(Color.WHITE);
         text.setFont(new Font("System", Font.BOLD, 16));
-        text.setBounds(200, 300, 500, 35);
+        text.setBounds(220, 300, 500, 200);
         image.add(text);
 
         back = new JButton("Back");

@@ -44,7 +44,7 @@ public class Transation extends JFrame implements ActionListener {// action list
         cashwith.addActionListener(this);
         image.add(cashwith);
 
-        fastcash = new JButton("Fast Cash");
+        fastcash = new JButton("Instant Cash");
         fastcash.setBounds(170, 450, 150, 30);
         fastcash.addActionListener(this);
         image.add(fastcash);
@@ -59,7 +59,7 @@ public class Transation extends JFrame implements ActionListener {// action list
         pinchange.addActionListener(this);
         image.add(pinchange);
 
-        balance = new JButton("Balance Enquiry");
+        balance = new JButton("View Balance");
         balance.setBounds(350, 485, 150, 30);
         balance.addActionListener(this);
         image.add(balance);
